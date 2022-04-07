@@ -25,7 +25,7 @@ TNode::TNode() {
 	data = new Phrase();
 }
 TNode::~TNode(){
-	//cout <<"Deleting "<<data->abbr<<endl;  // comment in for testing purposes
+	cout <<"Deleting "<<data->abbr<<endl; 
 }
 void TNode::printNode() {
 	cout << data->abbr<<","<<data->meaning<<","<<height<<endl;

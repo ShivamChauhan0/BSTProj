@@ -19,8 +19,47 @@ BST::BST(string s, string l) {
 }
 
 bool BST::insert(string s,string l) {
-
-}
+  TNode *add = new TNode(s,l);
+  TNode *tmp = root;
+  if(tmp == NULL) {
+    root = add;
+    add->printNode();
+    return true;
+  }
+  else{ 
+    while(tmp != NULL) {
+      // left side
+      if(s < tmp->data->abbr) { 
+        if(tmp->left == NULL) {
+          tmp->left = add;
+          tmp->left->parent = tmp;
+          setHeight(add);
+          return true;
+        }
+        else {
+          tmp = tmp->left;
+        }
+      }
+        //add right side
+      else if(s > tmp->data->abbr) { 
+        if(tmp->right == NULL) {
+          tmp->right = add;
+          tmp->right->parent = tmp;
+          setHeight(add);
+          return true;
+        }
+        else {
+          tmp = tmp->right;
+        }
+      }
+      else{
+        if(tmp->data->abbr == s) {
+        return false;
+      }
+      }
+      }
+    }
+  }
 
 TNode *BST::find(string s) {
 
@@ -29,7 +68,17 @@ TNode *BST::find(string s) {
 
 
 void BST::setHeight(TNode *tmp) {
-
+/*  tmp->height = 1;
+  int height = 2; // height was intially 1
+  while(tmp != root) {
+    tmp = tmp->parent; //goes up the free
+    if(tmp->height >= height) { //max height
+      return;
+    }
+    tmp->height = height; //sets height
+    height++;
+  }
+ */ 
 }
 void BST::printTreeIO() {
 	if (root == NULL ) {
@@ -41,7 +90,14 @@ void BST::printTreeIO() {
 	}
 }
 void BST::printTreeIO(TNode *tmp) {
-
+  if(tmp == NULL) {
+    return;
+  }
+  else {
+    printTreeIO(tmp->left);
+    tmp->printNode();
+    printTreeIO(tmp->right);
+  }
 }
 
 void BST::printTreePre() {
@@ -54,7 +110,14 @@ void BST::printTreePre() {
 	}
 }
 void BST::printTreePre(TNode *tmp) {
-
+ if(tmp == NULL) {
+    return;
+  }
+  else {
+    tmp->printNode();
+    printTreeIO(tmp->left);
+    printTreeIO(tmp->right);
+  }
 }
 
 void BST::printTreePost() {
@@ -68,7 +131,14 @@ void BST::printTreePost() {
 }
 
 void BST::printTreePost(TNode *tmp) {
-
+if(tmp == NULL) {
+    return;
+  }
+  else {
+    printTreeIO(tmp->left);
+    printTreeIO(tmp->right);
+    tmp->printNode();
+  }
 }
 void BST::clearTree() {
 	if (root == NULL) {
@@ -87,7 +157,7 @@ void BST::clearTree(TNode *tmp) {
 	else {
 		clearTree(tmp->left);
 		clearTree(tmp->right);
-		//tmp->printNode();  // for testing, comment back in
+		tmp->printNode();  
 		delete(tmp);
 	}
 }

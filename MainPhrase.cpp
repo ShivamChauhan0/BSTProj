@@ -10,6 +10,16 @@
 using namespace std;
 
 int main() {
+	cout <<"******Part 2 - testing left***********"<<endl;
+	Abbr *abbr = new Abbr("Testleft.txt",2);
+	cout << "************************************" << endl;
+	abbr->tree->clearTree();
+	delete abbr;
+	cout <<endl<< "********* Part3: Testing right *********" << endl;
+	abbr = new Abbr("Testright.txt",2);
+	cout << "********End Part 3 *****************" << endl;
+
+
 	/*
 //Part 1: before you can test this, write the printTreeIO,
 //the printTreePree, and printTreePost methods for the BST.
@@ -105,6 +115,8 @@ int main() {
 	cout <<"************End Part 7 *******************" << endl;
 */
 //
+//Part 8:
+//Testing the big tree! 
 //Part 8:
 //Testing the big tree!
 	cout << "*************************Part 8 *********************" <<endl;
