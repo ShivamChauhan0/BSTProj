@@ -62,13 +62,44 @@ bool BST::insert(string s,string l) {
   }
 
 TNode *BST::find(string s) {
+  if(root == NULL) {
+    return NULL;
+  }
+  else {
+    TNode *tmp = root;
+    while(true) {
+      if(tmp->data->abbr == s) {
+        return tmp;
+      }
+      else{
+        if(s > tmp->data->abbr ) { // checks right
+          if(tmp->right == NULL) {
+            return NULL;
+          }
+          tmp = tmp->right;
+        }
+        if(s < tmp->data->abbr) { // checks left
+          if(tmp->left == NULL) {
+            return NULL;
+          }
+          tmp = tmp->left;
+        }
+        else if(tmp->data->abbr == s) {
+          if(tmp->left == NULL) {
+            return NULL;
+          }
+          tmp = tmp->left;
+        }
+      }
+    }
+  }
 
 }
 
 
 
 void BST::setHeight(TNode *tmp) {
-/*  tmp->height = 1;
+ tmp->height = 1;
   int height = 2; // height was intially 1
   while(tmp != root) {
     tmp = tmp->parent; //goes up the free
@@ -78,7 +109,7 @@ void BST::setHeight(TNode *tmp) {
     tmp->height = height; //sets height
     height++;
   }
- */ 
+ 
 }
 void BST::printTreeIO() {
 	if (root == NULL ) {

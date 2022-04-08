@@ -16,9 +16,23 @@ int main() {
 	abbr->tree->clearTree();
 	delete abbr;
 	cout <<endl<< "********* Part3: Testing right *********" << endl;
-	abbr = new Abbr("Testright.txt",2);
+	abbr = new Abbr("TestRight.txt",2);
 	cout << "********End Part 3 *****************" << endl;
+  abbr->tree->clearTree();
+	delete abbr;
+	cout << endl<<"********* Part 5: Testing leftright ********" << endl;
+	abbr = new Abbr("TestLeftRight.txt",2);
+	cout << "**********End Part 5 ***************" << endl;
+	cout <<endl<<"***********Part 6:  Testing Find ************" << endl;
+	TNode *tmp = abbr->tree->find("LY");
+	tmp->printNode();
 
+	tmp = abbr->tree->find("SAA");
+	tmp->printNode();
+
+	tmp = abbr->tree->find("DMI");
+	tmp->printNode();
+	cout << "**********End Part 6 **************************" << endl;
 
 	/*
 //Part 1: before you can test this, write the printTreeIO,
@@ -119,7 +133,7 @@ int main() {
 //Testing the big tree! 
 //Part 8:
 //Testing the big tree!
-	cout << "*************************Part 8 *********************" <<endl;
+	/* cout << "*************************Part 8 *********************" <<endl;
 	//abbr->tree->clearTree();
 
 	//delete abbr;
@@ -127,6 +141,8 @@ int main() {
 	Abbr *abbrTree = new Abbr("abbr.txt",1);
 	abbrTree->Interface();
 	return 0;
+  */
+  return 0;
 }
 
 
