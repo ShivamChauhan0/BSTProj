@@ -194,11 +194,41 @@ void BST::clearTree(TNode *tmp) {
 }
 
 TNode *BST::removeNoKids(TNode *tmp) {
-
+  if(tmp != root) {
+    if(tmp->left->parent == tmp) {
+      tmp->left->parent = NULL;
+    }
+    else {
+      tmp->parent->right = NULL;
+    }
+  }
+  else {
+    root = NULL;
+  }
+  return tmp;
 }
 TNode *BST::removeOneKid(TNode *tmp,bool leftFlag) {
-
-}
+  TNode *kid;
+  if(leftFlag) {
+    kid = tmp->left;
+  }
+  else {
+    kid = tmp->right;
+  }
+  if(tmp != root) {
+    if(tmp->parent->left == tmp) {
+      tmp->parent->left = kid;
+    }
+    else {
+      tmp->parent->right = kid;
+    }
+  }
+  else {
+    root = kid;
+  }
+  return tmp;
+  }
+  
 TNode *BST::remove(string s) {
 
 }
