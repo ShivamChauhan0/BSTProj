@@ -2,7 +2,7 @@
  * TNode.hpp
  *
  *  Created on: Apr 3, 2020
- *      Author: 13027
+ *      Author: Shivam Chauhan and Estevan Bedolla
  */
 
 #ifndef TNODE_HPP_

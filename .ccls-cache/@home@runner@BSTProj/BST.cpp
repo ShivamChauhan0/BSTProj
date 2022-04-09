@@ -1,8 +1,8 @@
 /*
  * BST.cpp
- *
+ * 
  *  Created on: Apr 10, 2020
- *      Author: 13027
+ *      Author: Shivam Chauhan and Estevan Bedolla
  */
 
 
@@ -146,8 +146,8 @@ void BST::printTreePre(TNode *tmp) {
   }
   else {
     tmp->printNode();
-    printTreeIO(tmp->left);
-    printTreeIO(tmp->right);
+    printTreePre(tmp->left);
+    printTreePre(tmp->right);
   }
 }
 
@@ -166,8 +166,8 @@ if(tmp == NULL) {
     return;
   }
   else {
-    printTreeIO(tmp->left);
-    printTreeIO(tmp->right);
+    printTreePost(tmp->left);
+    printTreePost(tmp->right);
     tmp->printNode();
   }
 }
@@ -195,8 +195,8 @@ void BST::clearTree(TNode *tmp) {
 
 TNode *BST::removeNoKids(TNode *tmp) {
   if(tmp != root) {
-    if(tmp->left->parent == tmp) {
-      tmp->left->parent = NULL;
+    if(tmp->parent->left == tmp) {
+      tmp->parent->left = NULL;
     }
     else {
       tmp->parent->right = NULL;
@@ -230,6 +230,31 @@ TNode *BST::removeOneKid(TNode *tmp,bool leftFlag) {
   }
   
 TNode *BST::remove(string s) {
-
-}
-
+  TNode *removednode = find(s);
+  if(removednode->left != NULL & removednode->right != NULL) {
+    TNode *tmp = removednode->left;
+    while(tmp->right != NULL) {
+      tmp = tmp->right;
+      }
+    removednode->data = tmp->data; // copy's data
+    if(tmp->left == NULL) {
+      removeNoKids(tmp);
+    }
+    else if(tmp->right == NULL) {
+      removeOneKid(tmp,true);
+    }
+    else {
+      removeOneKid(tmp, false);
+    }
+    }
+  else if( removednode->right == NULL && removednode->left != NULL) { // checks left
+    removeOneKid(removednode, true);
+  }
+  else if( removednode->left == NULL && removednode->right != NULL) { // checks right
+    removeOneKid(removednode, false);
+  }
+  else {
+    removeNoKids(removednode);
+  }
+  return removednode;
+  }

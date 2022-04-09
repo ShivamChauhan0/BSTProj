@@ -2,7 +2,7 @@
  * Abbr.hpp
  *
  *  Created on: Apr 19, 2020
- *      Author: 13027
+ *      Author: Shivam Chauhan and Estevan Bedolla
  */
 
 #ifndef ABBR_HPP_

@@ -2,7 +2,7 @@
  * MainPhrase.cpp
  *
  *  Created on: Apr 19, 2020
- *      Author: 13027
+ *      Author: Shivam Chauhan and Estevan Bedolla
  */
 
 #include <iostream>
@@ -10,6 +10,7 @@
 using namespace std;
 
 int main() {
+  /* 
 	cout <<"******Part 2 - testing left***********"<<endl;
 	Abbr *abbr = new Abbr("Testleft.txt",2);
 	cout << "************************************" << endl;
@@ -33,7 +34,27 @@ int main() {
 	tmp = abbr->tree->find("DMI");
 	tmp->printNode();
 	cout << "**********End Part 6 **************************" << endl;
+	cout << endl<<"*********Part 7: Testing Remove***************************" << endl;
+	cout << "Removing no kids ('LY')"<< endl;
+	abbr->tree->remove("LY");
+	abbr->tree->printTreeIO();
+	abbr->tree->printTreePre();
+	abbr->tree->printTreePost();
 
+	cout << "************************************" << endl;
+	cout << "Removing one kid ('SAA')"<< endl;
+	abbr->tree->remove("SAA");
+	abbr->tree->printTreeIO();
+	abbr->tree->printTreePre();
+	abbr->tree->printTreePost();
+
+	cout << "************************************" << endl;
+	cout << "Removing two kid ('DMI')"<< endl;
+	abbr->tree->remove("DMI");
+	abbr->tree->printTreeIO();
+	abbr->tree->printTreePre();
+	abbr->tree->printTreePost();
+	cout <<"************End Part 7 *******************" << endl;
 	/*
 //Part 1: before you can test this, write the printTreeIO,
 //the printTreePree, and printTreePost methods for the BST.
@@ -142,6 +163,12 @@ int main() {
 	abbrTree->Interface();
 	return 0;
   */
+  //abbr->tree->clearTree();
+
+	//delete abbr;
+	cout << "********* Testing leftright ********" << endl;
+	Abbr *abbrTree = new Abbr("abbr.txt",1);
+	abbrTree->Interface();
   return 0;
 }
 

@@ -29,4 +29,5 @@ TNode::~TNode(){
 }
 void TNode::printNode() {
 	cout << data->abbr<<","<<data->meaning<<","<<height<<endl;
+
 }
