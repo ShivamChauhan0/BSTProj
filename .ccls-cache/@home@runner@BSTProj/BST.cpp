@@ -23,6 +23,7 @@ bool BST::insert(string s,string l) {
   TNode *tmp = root;
   if(tmp == NULL) {
     root = add;
+    root->height = 1;
     add->printNode();
     return true;
   }
@@ -59,7 +60,9 @@ bool BST::insert(string s,string l) {
       }
       }
     }
-  }
+  
+}
+
 
 TNode *BST::find(string s) {
   if(root == NULL) {
@@ -79,12 +82,6 @@ TNode *BST::find(string s) {
           tmp = tmp->right;
         }
         if(s < tmp->data->abbr) { // checks left
-          if(tmp->left == NULL) {
-            return NULL;
-          }
-          tmp = tmp->left;
-        }
-        else if(tmp->data->abbr == s) {
           if(tmp->left == NULL) {
             return NULL;
           }
